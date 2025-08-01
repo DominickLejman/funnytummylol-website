@@ -1,49 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>funnytummylol - The Most Epic Minecraft Server EVER!</title>
-	<style>
-		body {
-			background-color: #FFC107; /* a nice vomit yellow */
-			font-family: Arial, sans-serif;
-		}
-		.container {
-			width: 80%;
-			margin: 40px auto;
-			text-align: center;
-		}
-		.header {
-			font-size: 48px;
-			color: #8BC34A; /* a nice greenish color */
-		}
-		.description {
-			font-size: 18px;
-			color: #666;
-		}
-		.buttons {
-			margin-top: 20px;
-		}
-		.button {
-			background-color: #4CAF50; /* a nice greenish color */
-			color: #fff;
-			padding: 10px 20px;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-		}
-		.button:hover {
-			background-color: #3e8e41;
-		}
-	</style>
+  <meta charset="UTF-8" />
+  <title>3D Glass Text - No Modules</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(90deg, #FF69B4, #FFC67D, #8BC34A, #03A9F4, #7A288A);
+      background-size: 100% 300px;
+      animation: gradient 10s ease infinite;
+      height: 100vh;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 100%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 100%; }
+    }
+
+    #overlay {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      color: white;
+      font-family: sans-serif;
+    }
+  </style>
+<script type="importmap">
+	{
+	  "imports": {
+		"three": "/node_modules/three/build/three.module.js",
+		"three/addons/": "/node_modules/three/examples/jsm/"
+	  }
+	}
+	</script>
+	
 </head>
 <body>
-	<div class="container">
-		<div class="header">Welcome to funnytummylol!</div>
-		<div class="description">This is a private Minecraft server for me and my friends. Don't even think about trying to join if you're not cool enough.</div>
-		<div class="buttons">
-			<button class="button">Server IP: funnytummylol.com (just kidding, it's not public)</button>
-			<button class="button">Discord: funnytummylol#1234 (also not public, lol)</button>
-		</div>
-	</div>
+  <div id="overlay">Work in progress</div>
+
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>
