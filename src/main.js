@@ -2,8 +2,8 @@ import * as THREE from 'three';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 
-
-let scene, camera, renderer, textEdges, textMesh;
+let scene, camera, renderer;
+let textEdges, textMesh;
 
 init();
 animate();
@@ -24,9 +24,10 @@ function init() {
   scene.add(dirLight);
 
   const loader = new FontLoader();
-  loader.load('/public/fonts/nrb.json', function (font) {
+
+  loader.load('/fonts/nrb.json', fontNrb => {
     const geometry = new TextGeometry('funnytummylol', {
-      font: font,
+      font: fontNrb,
       size: 10,
       height: 1,
       curveSegments: 6,
@@ -37,14 +38,9 @@ function init() {
     });
     geometry.center();
 
-    // Outline (edges)
     const edges = new THREE.EdgesGeometry(geometry);
-    textEdges = new THREE.LineSegments(
-      edges,
-      new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 })
-    );
+    textEdges = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 }));
     scene.add(textEdges);
-
 
     textMesh = new THREE.Mesh(
       geometry,
@@ -72,15 +68,13 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+const clock = new THREE.Clock();
+
 function animate() {
   requestAnimationFrame(animate);
 
-  if (textEdges) {
-    textEdges.rotation.y += 0.01;
-  }
-  if (textMesh) {
-    textMesh.rotation.y += 0.01;
-  }
+  if (textEdges) textEdges.rotation.y += 0.01;
+  if (textMesh) textMesh.rotation.y += 0.01;
 
   renderer.render(scene, camera);
 }
