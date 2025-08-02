@@ -25,7 +25,7 @@ function init() {
 
   const loader = new FontLoader();
 
-  loader.load('/fonts/nrb.json', fontNrb => {
+  loader.load('fonts/nrb.json', fontNrb => {
     const geometry = new TextGeometry('funnytummylol', {
       font: fontNrb,
       size: 10,
